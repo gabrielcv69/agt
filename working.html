@@ -1,0 +1,50 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000">
+  <link rel="manifest" href="settings.json">
+  <title>Fake Google Maps</title>
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+    img, video {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <video id="surpriseVideo" style="display: block;" autoplay muted>
+    <source src="surprise1.mp4" type="video/mp4">
+  </video>
+
+  <script>
+    const videos = [
+      "1entre_google_map.mov", 
+      "2attente_ecriture.mov", 
+      "3time-square.mov", 
+      "4arrive_time_square.mov", 
+      "5earth_vue.mov"
+    ];
+    let currentVideoIndex = 0;
+    const video = document.getElementById('surpriseVideo');
+
+    video.addEventListener('click', () => {
+      currentVideoIndex++;
+      if (currentVideoIndex < videos.length) {
+        video.src = videos[currentVideoIndex];
+        video.play(); // Démarre la vidéo automatiquement
+      } else {
+        video.style.display = 'none'; // Cache la vidéo une fois toutes les vidéos vues
+        alert('Vous avez terminé les vidéos !');
+      }
+    });
+  </script>
+</body>
+</html>
